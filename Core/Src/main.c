@@ -92,8 +92,8 @@ int main(void)
   MX_CRC_Init();
   /* USER CODE BEGIN 2 */
 
-  printf("app is running....\r\n");
-  app_ota_test();
+  printf("OTA image is running....\r\n");
+  // app_ota_test();
 
   /* USER CODE END 2 */
 
