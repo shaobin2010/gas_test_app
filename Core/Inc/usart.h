@@ -32,6 +32,8 @@ extern "C" {
 
 /* USER CODE END Includes */
 
+extern UART_HandleTypeDef huart3;
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
@@ -39,9 +41,6 @@ extern "C" {
 void MX_USART3_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
-extern void Debug_USART_SendByte(char Byte);
-extern void Debug_Printf(char *str);
 
 /* USER CODE END Prototypes */
 
