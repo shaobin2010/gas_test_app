@@ -121,6 +121,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
   #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__ */
 
+#include "stm32f1xx_ll_usart.h"
 void Debug_USART_SendByte(char Byte)
 {
   while(!LL_USART_IsActiveFlag_TXE(USART3)) {
@@ -143,4 +144,6 @@ PUTCHAR_PROTOTYPE
 
   return ch;
 }
+
+
 /* USER CODE END 1 */

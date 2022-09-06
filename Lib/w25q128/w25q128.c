@@ -173,7 +173,7 @@ static void W25qxx_WaitForWriteEnd(void)
 
 	do{
 		StatusRegister = W25qxx_Spi(W25QXX_DUMMY_BYTE);
-		W25qxx_Delay(1000);
+		W25qxx_Delay(5);
 	}
 	while((StatusRegister & 0x01) == 0x01);
 
@@ -513,7 +513,6 @@ void W25qxx_WritePage(uint8_t *pBuffer, uint32_t Page_Address, uint32_t OffsetIn
 	W25qxx_WriteEnable();
 
 	W25QFLASH_CS_SELECT;
-
 	W25qxx_Spi(W25_PAGE_PROGRAMM);
 
 	Page_Address = (Page_Address * W25QFLASH_PAGE_SIZE) + OffsetInByte;
@@ -522,7 +521,6 @@ void W25qxx_WritePage(uint8_t *pBuffer, uint32_t Page_Address, uint32_t OffsetIn
 	W25qxx_Spi(Page_Address & 0xFF);
 
 	HAL_SPI_Transmit(W25QXX_SPI_PTR, pBuffer, NumByteToWrite_up_to_PageSize, 100);
-
 	W25QFLASH_CS_UNSELECT;
 
 	W25qxx_WriteDisable();
