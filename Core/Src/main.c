@@ -20,6 +20,7 @@
 #include "main.h"
 #include "crc.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -75,7 +76,6 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -90,10 +90,13 @@ int main(void)
   MX_USART3_UART_Init();
   MX_SPI1_Init();
   MX_CRC_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-
+  uint32_t last_tick = 0xFFFFFFFF;
+  uint32_t rl_tick;
   printf("OTA image is running....\r\n");
   // app_ota_test();
+  HAL_TIM_Base_Start_IT(&htim3);
 
   /* USER CODE END 2 */
 
@@ -101,6 +104,15 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  rl_tick = get_tim3_tick();
+	  if (rl_tick != last_tick) {
+		  if((rl_tick % 3) == 0) {
+			  last_tick = rl_tick;
+			  printf("1111\r\n");
+		  }
+		  last_tick = rl_tick;
+	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
