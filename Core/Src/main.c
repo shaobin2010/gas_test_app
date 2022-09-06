@@ -97,7 +97,7 @@ int main(void)
 
   uint32_t last_tick = 0xFFFFFFFF;
   uint32_t rl_tick;
-  printf("OTA image is running....\r\n");
+  printf("Gas app is running....\r\n");
   // app_ota_test();
   HAL_TIM_Base_Start_IT(&htim3);
 
@@ -111,7 +111,7 @@ int main(void)
 	  if (rl_tick != last_tick) {
 		  if((rl_tick % 3) == 0) {
 			  last_tick = rl_tick;
-			  printf("1111\r\n");
+			  printf("gas_app\r\n");
 		  }
 		  last_tick = rl_tick;
 	  }
