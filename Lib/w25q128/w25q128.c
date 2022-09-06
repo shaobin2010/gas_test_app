@@ -173,7 +173,7 @@ static void W25qxx_WaitForWriteEnd(void)
 
 	do{
 		StatusRegister = W25qxx_Spi(W25QXX_DUMMY_BYTE);
-		W25qxx_Delay(1000);
+		W25qxx_Delay(5);
 	}
 	while((StatusRegister & 0x01) == 0x01);
 
