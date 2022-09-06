@@ -92,6 +92,9 @@ int main(void)
   MX_CRC_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+  // 打开全局中断，因为bootloader跳转前关闭了全局中断
+  __enable_irq();
+
   uint32_t last_tick = 0xFFFFFFFF;
   uint32_t rl_tick;
   printf("OTA image is running....\r\n");
